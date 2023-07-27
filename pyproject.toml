@@ -46,6 +46,7 @@ lint = [
     "codespell>=2.2.5",
     "mypy>=1.4.1",
     "pre-commit>=3.3.3",
+    "pip-audit>=2.6.1",
 ]
 
 [tool.pdm.build]
