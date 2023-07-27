@@ -27,21 +27,14 @@ jobs:
         run: pre-commit run --show-diff-on-failure --color=always --all-files
 
   test:
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
         python-version: ["3.11"]
-    steps:
-      - name: Run tests
-        uses: ./.github/workflows/test.yaml
-        with:
-          python-version: ${{ matrix.python-version }}
-          coverage: ${{ matrix.python-version == '3.11' }}
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    uses: ./.github/workflows/test.yaml
+    with:
+      python-version: ${{ matrix.python-version }}
+      coverage: ${{ matrix.python-version == '3.11' }}
 
   audit:
     strategy:
@@ -51,6 +44,16 @@ jobs:
     uses: ./.github/workflows/audit.yaml
     with:
       python-version: ${{ matrix.python-version }}
+
+  codecov:
+    needs: test
+    if: github.event.pull_request.head.repo.fork == false && github.repository_owner == 'JacobCoffee'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   sonar:
     needs: test
