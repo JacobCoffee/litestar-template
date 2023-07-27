@@ -1,5 +1,5 @@
 [project]
-name = "litestar-hello-world"
+name = "litestar-template"
 version = "0.1.0"
 description = "A minimal template for Litestar based projects"
 authors = [
