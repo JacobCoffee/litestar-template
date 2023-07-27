@@ -38,8 +38,6 @@ jobs:
           cache: true
       - name: Install dependencies
         run: pdm install
-      - name: Install dependencies
-        run: pdm install
       - name: Set pythonpath
         run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
       - name: Test

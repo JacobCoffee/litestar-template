@@ -35,6 +35,16 @@ jobs:
     with:
       python-version: ${{ matrix.python-version }}
       coverage: ${{ matrix.python-version == '3.11' }}
+
+  audit:
+    strategy:
+      fail-fast: true
+      matrix:
+        python-version: ["3.11"]
+    uses: ./.github/workflows/audit.yaml
+    with:
+      python-version: ${{ matrix.python-version }}
+
 #
 #  sonar:
 #    needs: test
