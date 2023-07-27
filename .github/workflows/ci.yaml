@@ -96,3 +96,18 @@ jobs:
           command: test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  changelog:
+    needs:
+      - test
+      - validate
+    if: github.event.pull_request.head.repo.fork == false && github.repository_owner == 'JacobCoffee'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v2
+        with:
+          config: cliff.toml
+          args: --verbose
+        env:
+          OUTPUT: docs/changelog.rst
