@@ -111,4 +111,4 @@ jobs:
           config: cliff.toml
           args: --verbose
         env:
-          OUTPUT: docs/changelog.rst
+          OUTPUT: changelog.rst
