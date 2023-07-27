@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %} {% block title %}Home{% endblock %} {% block body
+%}
+<div class="text-center w-full">
+  <h1 class="text-neutral-900 dark:text-litestar-gray font-bold text-4xl mb-6">
+    A Basic Litestar Template brough to you by Railway
+  </h1>
+  <p class="text-neutral-900 dark:text-litestar-gray text-lg mb-6">
+    This is a template application for the Litestar framework.
+  </p>
+  <a
+    href="https://github.com/litestar-org/litestar"
+    class="text-neutral-900 dark:text-litestar-gold bg-litestar-gold dark:bg-litestar-blue hover:bg-litestar-gray dark:hover:bg-litestar-gold dark:hover:text-neutral-900 py-2 px-4 rounded"
+    >Check out the Litestar project</a
+  >
+  <a
+    href="{{ railway_ref_url }}"
+    class="text-neutral-900 dark:text-litestar-gold bg-litestar-gold dark:bg-litestar-blue hover:bg-litestar-gray dark:hover:bg-litestar-gold dark:hover:text-neutral-900 py-2 px-4 rounded"
+    >Deploy your own</a
+  >
+  <a
+    href="/api"
+    class="text-neutral-900 dark:text-litestar-gold bg-litestar-gold dark:bg-litestar-blue hover:bg-litestar-gray dark:hover:bg-litestar-gold dark:hover:text-neutral-900 py-2 px-4 rounded"
+    >View the API</a
+  >
+</div>
+{% endblock body %}

@@ -1,0 +1,190 @@
+{% set active_page = active_page|default('home') -%}
+<!-- https://feathericons.dev/ -->
+
+<header class="bg-litestar-blue dark:bg-litestar-blue">
+  <nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-4">
+    <div
+      class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-4"
+    >
+      <div class="pl-4 flex items-center">
+        <a
+          class="text-white no-underline hover:no-underline font-bold text-2xl flex items-center"
+          href="/"
+        >
+          <img class="h-20 w-auto mr-3" src="static/logo.png" alt="" />
+          Litestar Template
+        </a>
+      </div>
+
+      <div class="block lg:hidden pr-4">
+        <button
+          id="nav-toggle"
+          class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-litestar-gold hover:border-litestar-gold appearance-none focus:outline-none"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 p-4 lg:p-0 z-20"
+        id="nav-content"
+      >
+        <ul class="list-reset lg:flex justify-end flex-1 items-center relative">
+          <li class="mr-4">
+            <a
+              href="{{ repo_url }}"
+              class="font-semibold text-white hover:text-litestar-gold dark:text-litestar-neutral-900 dark:hover:text-litestar-yellow"
+              >Code</a
+            >
+          </li>
+          <li class="mr-2">|</li>
+          <li class="mr-4">
+            <a
+              href="{{ railway_ref_url }}"
+              class="font-semibold text-white hover:text-litestar-gold dark:text-litestar-neutral-900 dark:hover:text-litestar-yellow"
+              >Railway</a
+            >
+          </li>
+          <li class="mr-2">|</li>
+          <li class="mr-4 dropdown">
+            <a
+              href="/api"
+              class="font-semibold text-white hover:text-litestar-gold dark:text-litestar-neutral-900 dark:hover:text-litestar-yellow"
+              >API <span aria-hidden="true">&rarr;</span></a
+            >
+            <!-- Dropdown menu -->
+            <ul
+              class="dropdown-content absolute hidden text-white hover:text-neutral-900 dark:text-litestar-gray dark:hover:text-litestar-yellow pt-1"
+            >
+              <li class="">
+                <a
+                  class="rounded-t bg-litestar-yellow dark:bg-litestar-gold hover:bg-litestar-gray dark:hover:bg-litestar-blue py-2 px-4 block whitespace-no-wrap"
+                  href="/api/swagger"
+                  >Swagger</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="bg-litestar-yellow dark:bg-litestar-gold hover:bg-litestar-gray dark:hover:bg-litestar-blue py-2 px-4 block whitespace-no-wrap"
+                  href="/api/elements"
+                  >Elements</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="rounded-b bg-litestar-yellow dark:bg-litestar-gold hover:bg-litestar-gray dark:hover:bg-litestar-blue py-2 px-4 block whitespace-no-wrap"
+                  href="/api/redoc"
+                  >ReDoc</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <button
+          type="button"
+          class="text-sm font-semibold leading-6 dark:text-litestar-gray dark:hover:text-litestar-yellow mr-4"
+          onclick="toggleLightMode()"
+          id="light-mode-toggle"
+          style="display: none"
+        >
+          <span class="sr-only">Light Mode</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            class="main-grid-item-icon"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" x2="12" y1="1" y2="3"></line>
+            <line x1="12" x2="12" y1="21" y2="23"></line>
+            <line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+            <line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+            <line x1="1" x2="3" y1="12" y2="12"></line>
+            <line x1="21" x2="23" y1="12" y2="12"></line>
+            <line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+            <line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="text-sm font-semibold leading-6 text-litestar-gold hover:text-litestar-gray mr-4"
+          onclick="toggleDarkMode()"
+          id="dark-mode-toggle"
+          style="display: block"
+        >
+          <span class="sr-only">Dark Mode</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            class="main-grid-item-icon"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+{% block extrajs %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownTrigger = document.querySelector(".dropdown");
+    const dropdownContent = document.querySelector(".dropdown-content");
+
+    const showDropdown = () => {
+      dropdownContent.classList.add("transform", "opacity-100", "scale-100");
+      dropdownContent.classList.remove("transform", "opacity-0", "scale-95");
+      dropdownContent.style.display = "block";
+    };
+
+    const hideDropdown = () => {
+      dropdownContent.classList.add("transform", "opacity-0", "scale-95");
+      dropdownContent.classList.remove("transform", "opacity-100", "scale-100");
+      setTimeout(() => {
+        dropdownContent.style.display = "none";
+      }, 100);
+    };
+
+    if (dropdownTrigger) {
+      dropdownTrigger.addEventListener("mouseenter", showDropdown);
+      dropdownTrigger.addEventListener("mouseleave", hideDropdown);
+      dropdownContent.addEventListener("mouseenter", showDropdown);
+      dropdownContent.addEventListener("mouseleave", hideDropdown);
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("nav-toggle");
+    const navContent = document.getElementById("nav-content");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", function () {
+        navContent.classList.toggle("hidden");
+      });
+    }
+  });
+</script>
+{% endblock %}
