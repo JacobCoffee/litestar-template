@@ -1,0 +1,25 @@
+name: pip-audit
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      SETUPTOOLS_USE_DISTUTILS: stdlib
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11" # ["3.11", "3.12"]
+#          allow-prereleases: true # Awaiting Litestar 3.12 compat
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install
+        run: python -m pip install .
+      - uses: pypa/gh-action-pip-audit@v1.0.8

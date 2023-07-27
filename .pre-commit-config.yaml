@@ -1,6 +1,11 @@
 default_language_version:
   python: "3.11"
 repos:
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v2.3.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -12,40 +17,58 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.0.267"
+    rev: "v0.0.280"
     hooks:
       - id: ruff
         args: ["--fix"]
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.4
+    rev: v2.2.5
     hooks:
       - id: codespell
   - repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 23.7.0
     hooks:
       - id: black
         args: [--config=./pyproject.toml]
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.13.0
+    rev: 1.15.0
     hooks:
       - id: blacken-docs
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v3.0.0"
+    hooks:
+      - id: prettier
+        exclude: "_templates|.git"
+  - repo: https://github.com/python-formate/flake8-dunder-all
+    rev: v0.3.0
+    hooks:
+      - id: ensure-dunder-all
+        exclude: "test*"
+        args: ["--use-tuple"]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.3.0"
+    rev: "v1.4.1"
     hooks:
       - id: mypy
+        exclude: "docs"
         additional_dependencies:
           [
-            litestar==2.0.0a7,
+            annotated_types,
+            httpx,
+            httpx_sse,
+            hypothesis,
+            jsbeautifier,
             pytest,
+            pytest-lazy-fixture,
+            pytest-mock,
+            pytest_docker,
+            python-dotenv,
+            click,
+            rich,
+            rich-click,
             uvicorn,
+            litestar,
           ]
-  - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.308
+  - repo: https://github.com/sphinx-contrib/sphinx-lint
+    rev: "v0.6.7"
     hooks:
-      - id: pyright
-        additional_dependencies:
-          [
-            litestar==2.0.0a7,
-            pytest,
-            uvicorn,
-          ]
+      - id: sphinx-lint
