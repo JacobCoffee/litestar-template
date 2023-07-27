@@ -57,7 +57,6 @@ include = '\.pyi?$'
 
 [tool.codespell]
 ignore-words-list = "selectin"
-skip = "poetry.lock"
 
 [tool.coverage.run]
 omit = ["*/tests/*"]

@@ -29,28 +29,4 @@ For working on this template, you'll need to clone the repo and set up for devel
 
 1. Clone [the repo](https://github.com/JacobCoffee/litestar-template)
 2. Install [Python Development Master (`PDM`)](https://pdm.fming.dev/latest/)
-3.
-
-```toml
-litestar = {path = "../litestar", develop = true}
-```
-
-This assumes that `Litestar` and this app exist in the same directory.
-
-Run uvicorn with:
-
-`$ poetry run uvicorn main:app --reload --reload-dir "../litestar/litestar"`
-
-## Code Quality
-
-After cloning:
-
-`$ pre-commit install`
-
-Run on all files:
-
-`$ pre-commit run --all-files`
-
-Run a specific hook:
-
-`$ pre-commit run mypy --all-files`
+3. TODO
