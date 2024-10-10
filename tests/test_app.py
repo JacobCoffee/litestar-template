@@ -1,6 +1,6 @@
 from litestar.testing import TestClient
 
-from src.app import app
+from app.app import app
 
 
 def test_sync() -> None:

@@ -67,7 +67,7 @@ test:  ## Run the tests
 	$(PDM_RUN_BIN) pytest tests
 
 coverage:  ## Run the tests and generate coverage report
-	$(PDM_RUN_BIN) pytest tests --cov=src
+	$(PDM_RUN_BIN) pytest tests --cov=app
 	$(PDM_RUN_BIN) coverage html
 	$(PDM_RUN_BIN) coverage xml
 
@@ -84,7 +84,7 @@ docs-clean: ## Dump the existing built docs
 	rm -rf docs/_build
 
 docs-serve: docs-clean ## Serve the docs locally
-	$(PDM_RUN_BIN) $(SPHINXAUTOBUILD) docs docs/_build/ -j auto --watch src --watch docs --watch tests --watch CONTRIBUTING.rst --port 8002
+	$(PDM_RUN_BIN) $(SPHINXAUTOBUILD) docs docs/_build/ -j auto --watch app --watch docs --watch tests --watch CONTRIBUTING.rst --port 8002
 
 docs: docs-clean ## Dump the existing built docs and rebuild them
 	$(PDM_RUN_BIN) $(SPHINXBUILD) docs docs/_build/ -E -a -j auto --keep-going
