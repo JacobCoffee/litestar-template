@@ -1,1 +1,0 @@
-"""Litestar Template for Railway."""

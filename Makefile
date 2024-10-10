@@ -36,13 +36,13 @@ upgrade:       ## Upgrade all dependencies to the latest stable versions
 
 install-pdm: ## Install latest version of PDM
 	@echo "Installing PDM..."
-	@curl -sSL https://pdm.fming.dev/dev/install-pdm.py | python3 -
+	@curl -sSL https://pdm-project.org/install-pdm.py | python3 -
 
 install-pre-commit: ## Install pre-commit and install hooks
 	@echo "Installing pre-commit"
 	@$(PDM) add pre-commit
-	@pre-commit install --install-hooks --all
-	@pre-commit install --hook-type commit-msg
+	@$(PDM_RUN_BIN) pre-commit install --install-hooks --all
+	@$(PDM_RUN_BIN) pre-commit install --hook-type commit-msg
 	@echo "pre-commit installed"
 
 install: ## Install all dependencies

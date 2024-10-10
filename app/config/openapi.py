@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 from litestar.openapi.config import OpenAPIConfig
 from litestar.openapi.spec import Contact
 
-from src.__metadata__ import __project__ as project
-from src.__metadata__ import __version__ as version
+from app.__metadata__ import __project__ as project
+from app.__metadata__ import __version__ as version
 
 __all__ = ["config"]
 load_dotenv()

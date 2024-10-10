@@ -1,5 +1,5 @@
 [project]
-name = "litestar-template"
+name = "app"
 version = "0.1.0"
 description = "A minimal template for Litestar based projects"
 authors = [
@@ -8,6 +8,7 @@ authors = [
 dependencies = [
     "python-dotenv>=1.0.0",
     "litestar[standard]>=2.0.0b4",
+    "pre-commit>=4.0.1",
 ]
 requires-python = ">=3.11,<4.0"
 readme = "README.md"

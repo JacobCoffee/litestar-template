@@ -5,10 +5,9 @@ import sys
 from pathlib import Path
 
 import urllib3
+from app.__metadata__ import __project__ as project
+from app.__metadata__ import __version__ as version
 from dotenv import load_dotenv
-
-from src.__metadata__ import __project__ as project
-from src.__metadata__ import __version__ as version
 
 # -- Environmental Data ------------------------------------------------------
 path = Path("..").resolve()

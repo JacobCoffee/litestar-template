@@ -11,7 +11,7 @@ from litestar import Controller, Litestar, Request, get
 from litestar.response import Template
 from litestar.types import ControllerRouterHandler
 
-from src.config import openapi, static_files, template
+from app.config import openapi, static_files, template
 
 __all__ = (
     "ConcurrencyModelExamplesController",
