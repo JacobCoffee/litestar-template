@@ -5,6 +5,7 @@ import os
 
 from dotenv import load_dotenv
 from litestar.openapi.config import OpenAPIConfig
+from litestar.openapi.plugins import RedocRenderPlugin, ScalarRenderPlugin, StoplightRenderPlugin, SwaggerRenderPlugin
 from litestar.openapi.spec import Contact
 
 from app.__metadata__ import __project__ as project
@@ -29,7 +30,12 @@ config = OpenAPIConfig(
         email=os.getenv("OPENAPI_CONTACT_EMAIL", "admin@localhost"),
     ),
     use_handler_docstrings=True,
-    root_schema_site="swagger",
     path=os.getenv("OPENAPI_PATH", "/api"),
+    render_plugins=[
+        ScalarRenderPlugin(),
+        SwaggerRenderPlugin(),
+        RedocRenderPlugin(),
+        StoplightRenderPlugin(),
+    ],
 )
 """OpenAPI config for app."""
